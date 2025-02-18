@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Point | Contact Us</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style1.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/FoodPoint.png" alt="logo" width="120">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Dessert.html">Dessert</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Review.html">Review</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="container my-5">
+        <h1 class="text-center mb-4 text-danger"> <span>Order</span> Now </h1>
+
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <img src="images/contact.png" class="img-fluid rounded shadow" alt="contact">
+            </div>
+            <div class="col-md-6">
+                <form id="contactForm">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input type="text" id="name" class="form-control" placeholder="Name" required>
+                            <small class="text-danger" id="nameError"></small>
+                        </div>
+                        <div class="col">
+                            <input type="email" id="email" class="form-control" placeholder="Email" required>
+                            <small class="text-danger" id="emailError"></small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input type="number" id="number" class="form-control" placeholder="Contact Number" required>
+                            <small class="text-danger" id="numberError"></small>
+                        </div>
+                        <div class="col">
+                            <input type="number" id="age" class="form-control" placeholder="Age" required>
+                            <small class="text-danger" id="ageError"></small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <textarea id="address" class="form-control" placeholder="Address" rows="4" required></textarea>
+                        <small class="text-danger" id="addressError"></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <div class="mb-2">
+                <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-pinterest"></i> Pinterest</a>
+                <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+            <p class="mb-0">All rights reserved 2025</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#order" class="btn btn-danger position-fixed bottom-0 end-0 m-3">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Validation -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            let isValid = true;
+
+            // Get input values
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const number = document.getElementById("number").value.trim();
+            const age = document.getElementById("age").value.trim();
+            const address = document.getElementById("address").value.trim();
+
+            // Name validation (Only letters)
+            if (!/^[a-zA-Z ]+$/.test(name)) {
+                document.getElementById("nameError").innerText = "Only letters are allowed.";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").innerText = "";
+            }
+
+            // Email validation
+            if (!/^[^@]+@\w+(\.\w+)+\w$/.test(email)) {
+                document.getElementById("emailError").innerText = "Enter a valid email address.";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").innerText = "";
+            }
+
+            // Number validation (Only digits)
+            if (!/^\d+$/.test(number)) {
+                document.getElementById("numberError").innerText = "Enter a valid phone number.";
+                isValid = false;
+            } else {
+                document.getElementById("numberError").innerText = "";
+            }
+
+            // Age validation (Between 1 and 120)
+            if (age < 1 || age > 120 || !/^\d+$/.test(age)) {
+                document.getElementById("ageError").innerText = "Enter a valid age between 1 and 120.";
+                isValid = false;
+            } else {
+                document.getElementById("ageError").innerText = "";
+            }
+
+            // Address validation (Cannot be empty)
+            if (address.length < 5) {
+                document.getElementById("addressError").innerText = "Address must be at least 5 characters.";
+                isValid = false;
+            } else {
+                document.getElementById("addressError").innerText = "";
+            }
+
+            // Prevent form submission if validation fails
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
